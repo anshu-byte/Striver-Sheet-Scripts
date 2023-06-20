@@ -21,7 +21,7 @@ class Solution:
     # Tortoise-Hare-Approach
     def middleNode2(self,head):
         slow,fast = head,head
-        while fast:
+        while fast is not None and fast.next is not None:
             slow = slow.next
             fast = fast.next.next
         return slow
@@ -41,11 +41,3 @@ sol.printList(head)
 # head = sol.middleNode(head)
 head = sol.middleNode2(head)
 sol.printList(head)
-
-
-
-
-
-
-
-
