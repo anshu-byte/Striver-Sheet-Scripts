@@ -14,11 +14,10 @@ class Solution:
     #         rec(s,res,nums,index+1,n)
     #     rec(s,[],nums,0,n)
     #     return [list(i) for i in s]
+
     def subsetsWithDup(self, nums):
         ans = []
         ds = []
-
-
         def findSubsets(ind: int):
             ans.append(ds[:])
             for i in range(ind, len(nums)):
