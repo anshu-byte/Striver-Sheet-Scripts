@@ -1,11 +1,7 @@
 Striver Sheet -> https://takeuforward.org/interviews/strivers-sde-sheet-top-coding-interview-problems/
 
-every solution is well written along with time and space complexity
+If you have any doubt you can mail me at anshuyaduvanshi196@gmail.com
 
-you can also contribute if you find any better solution for the problem
+You can also contact me on linkedin www.linkedin.com/in/anshu-byte
 
-if you have any doubt you can mail me at anshuyaduvanshi196@gmail.com
-
-you can also contact me on linkedin www.linkedin.com/in/anshu-kumar196
-
-happy grinding!!, keep coding!!, keep hustling!!, keep contributing!!, bye!!
+Happy grinding!!, keep coding!!, keep hustling!!, keep contributing!!, bye!!
