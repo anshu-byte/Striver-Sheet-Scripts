@@ -1,7 +1,4 @@
 # Definition for a binary tree node.
-from typing import Optional
-
-
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
@@ -21,10 +18,8 @@ class Solution:
             return True
         if left is None or right is None:
             return False
-
-        if left.val == right.val:
-            inPair = self.isMirror(left.right, right.left)
-            outPair = self.isMirror(left.left, right.right)
-            return inPair and outPair
-        else:
+        if left.val != right.val:
             return False
+        return self.isMirror(left.right, right.left) and self.isMirror(
+            left.left, right.right
+        )

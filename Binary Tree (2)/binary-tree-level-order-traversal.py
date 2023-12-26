@@ -6,18 +6,22 @@ class Solution:
         if not root:
             return []
 
-        res = []
-        queue = deque([[1, root]])
+        result = []
+        queue = deque([root])
 
         while queue:
-            level, node = queue.popleft()
-            if node:
-                queue.append([level + 1, node.left])
-                queue.append([level + 1, node.right])
+            level_size = len(queue)
+            current_level = []
 
-                if level > len(res):
-                    res.append([node.val])
-                else:
-                    res[level - 1].append(node.val)
+            for _ in range(level_size):
+                node = queue.popleft()
+                current_level.append(node.val)
 
-        return res
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+
+            result.append(current_level)
+
+        return result
