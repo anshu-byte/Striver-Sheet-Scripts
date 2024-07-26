@@ -11,40 +11,4 @@ def shortest_common_supersequence(s1, s2):
 if __name__ == "__main__":
     s1 = "geek"
     s2 = "eke"
-    l = [
-        "",
-        "g",
-        "e",
-        "e",
-        "k",
-        "s",
-        "ge",
-        "ge",
-        "gk",
-        "gs",
-        "ee",
-        "ek",
-        "es",
-        "ek",
-        "es",
-        "ks",
-        "gee",
-        "gek",
-        "ges",
-        "gek",
-        "ges",
-        "gks",
-        "eek",
-        "ees",
-        "eks",
-        "eks",
-        "geek",
-        "gees",
-        "geks",
-        "geks",
-        "eeks",
-        "geks",
-        "geeks",
-    ]
-    print(len(l))
     print(shortest_common_supersequence(s1, s2))
