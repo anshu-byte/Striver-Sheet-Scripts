@@ -1,63 +1,53 @@
+from typing import List
+
+
 class Solution:
     def solveNQueens(self, n: int) -> List[List[str]]:
-        # Empty Board
-        board = [['.' for _ in range(n)] for _ in range(n)]
-        ans = []
+        if n == 1:
+            return [["Q"]]
+        if n < 4:
+            return []
 
-        # Basic Solution
-        # def isSafe(row,col,board,n):
-        #     r,c = row,col
-            
-        #     # Left Upward Diagonal Case
-        #     while(r>=0 and c>=0):
-        #         if board[r][c]=='Q': return False
-        #         r -=1
-        #         c -=1
+        def canPlace(mat, row, col):
+            for r in range(row):
+                if mat[r][col] == "Q":
+                    return False
 
-        #     r,c = row,col
+            for c in range(col):
+                if mat[row][c] == "Q":
+                    return False
 
-        #     # Left Coloumn Direction
-        #     while(c>=0):
-        #         if board[r][c]=='Q': return False
-        #         c -=1
-            
-        #     r,c = row,col
+            dx, dy = row - 1, col - 1
+            while dx >= 0 and dy >= 0:
+                if mat[dx][dy] == "Q":
+                    return False
+                dx -= 1
+                dy -= 1
 
-        #     # Left Downward Diagonal Case
-        #     while(r<n and c>=0):
-        #         if board[r][c]=='Q': return False
-        #         r +=1
-        #         c -= 1
-        #     return True
+            dx, dy = row - 1, col + 1
+            while dx >= 0 and dy < n:
+                if mat[dx][dy] == "Q":
+                    return False
+                dx -= 1
+                dy += 1
 
-        # def solve(col,board,ans,n):
-        #     if col==n:
-        #         ans.append([''.join(row) for row in board])
-        #         return
-        #     for row in range(n):
-        #         if(isSafe(row,col,board,n)):
-        #             board[row][col]='Q'
-        #             solve(col+1,board,ans,n)
-        #             board[row][col]='.'
-        # solve(0,board,ans,n)
+            return True
 
-        # Using Hash for isSafe
-        leftRow, upperDiagonal, lowerDiagonal = [0 for i in range(n)],[0 for i in range(2*n-1)],[0 for i in range(2*n-1)]
-        def solve1(col):
-            if col==n:
-                ans.append([''.join(row) for row in board])
+        temp = [["." for _ in range(n)] for _ in range(n)]
+        res = []
+
+        def dfs(row, cnt, matrix):
+            if row == n:
+                if cnt == n:
+                    new_matrix = ["".join(row) for row in matrix]
+                    res.append(new_matrix)
                 return
-            for row in range(n):
-                if(leftRow[row]==0 and lowerDiagonal[row+col]==0 and upperDiagonal[n-1+col-row]==0):
-                    board[row][col]='Q'
-                    leftRow[row]=1
-                    lowerDiagonal[row+col]=1
-                    upperDiagonal[n-1+col-row]=1
-                    solve1(col+1)
-                    board[row][col]='.'
-                    leftRow[row]=0
-                    lowerDiagonal[row+col]=0
-                    upperDiagonal[n-1+col-row]=0          
-        solve1(0)
-        return ans
 
+            for col in range(n):
+                if canPlace(matrix, row, col):
+                    matrix[row][col] = "Q"
+                    dfs(row + 1, cnt + 1, matrix)
+                    matrix[row][col] = "."
+
+        dfs(0, 0, temp)
+        return res

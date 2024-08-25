@@ -17,45 +17,37 @@ class Solution:
         #     res += min(rightMaxHeight,leftMaxHeight) - heights[i]
         # return res
 
-        #  # better
+        # # better
         # res = 0
         # n = len(heights)
         # leftMax = [0]*n
         # leftMax[0] = heights[0]
         # for i in range(1,n):
-        #     leftMax[i] = max(leftMax[i-1],heights[i]) 
+        #     leftMax[i] = max(leftMax[i-1],heights[i])
         # rightMax = [0]*n
         # rightMax[n-1] = heights[n-1]
         # for i in range(n-2,-1,-1):
         #     rightMax[i] = max(rightMax[i+1],heights[i])
-        # for i in range(n):  
+        # for i in range(n):
         #     res += min(leftMax[i],rightMax[i]) - heights[i]
         # return res
 
-        # best
+        # Best
         res = 0
         n = len(heights)
-        l,r = 0,n-1
-        leftMax,rightMax = 0,0
-        while l<=r:
+        l, r = 0, n - 1
+        leftMax, rightMax = 0, 0
+        while l < r:
             if heights[l] <= heights[r]:
-                if heights[l]<=leftMax:
+                if heights[l] <= leftMax:
                     res += leftMax - heights[l]
                 else:
                     leftMax = heights[l]
                 l += 1
             else:
-                if heights[r]<=rightMax:
+                if heights[r] <= rightMax:
                     res += rightMax - heights[r]
                 else:
                     rightMax = heights[r]
                 r -= 1
         return res
-
-
-
-sol = Solution()
-heights = [0,1,0,2,1,0,1,3,2,1,2,1]
-print(sol.trap(heights))
-
-

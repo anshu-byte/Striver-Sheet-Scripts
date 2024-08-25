@@ -42,7 +42,9 @@ class Solution:
 
 
 sol = Solution()
-nums = [2, 7, 7, 11, 4, 1, 7, 7, 15]
-target = 32
+nums = [2, 2, 2, 2, 2]
+target = 8
+# nums = [1, 0, -1, 0, -2, 2]
+# target = 0
 n = 4
 print(sol.nSum(n, nums, target))
